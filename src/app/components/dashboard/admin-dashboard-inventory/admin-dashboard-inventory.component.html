@@ -1,0 +1,73 @@
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                      
+                            <li class="page-item">
+                                <a class="page-link" href="Javascript:void" (click)="prev()" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        
+                        &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                        
+                            <li class="page-item">
+                                <a class="page-link" href="Javascript:void(0)" (click)="next()" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        
+
+                    </ul>
+                </nav>
+
+                <table class="table table-bordered" style="width: 500px;">
+                    <thead>
+                        <tr>
+                            <th scope="col" [appSort]="product" data-order="desc" data-name="id">
+                                ID &nbsp;<i style="font-size:24px" class="fa">&#xf0dc;</i></th>
+                            <th scope="col" [appSort]="product" data-order="desc" data-name="productName">
+                                Name <br /><i style="font-size:24px" class="fa">&#xf0dc;</i></th>
+                            <th scope="col" [appSort]="product" data-order="desc" data-name="price">
+                                Price <i style="font-size:24px" class="fa">&#xf0dc;</i></th>
+                            <th scope="col" [appSort]="product" data-order="desc" data-name="quantity">
+                                Quantity<i style="font-size:24px" class="fa">&#xf0dc;</i></th>
+                            <th scope="col" [appSort]="product" data-order="desc" data-name="category">
+                                Category <i style="font-size:24px" class="fa">&#xf0dc;</i></th>
+                            <th scope="col">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor = "let product of product">
+                            <th scope="row">{{product.id}}</th>
+                            <td>
+                                {{product.productName}}
+                            </td>
+                            <td>
+                                $ {{product.price}}
+                            </td>
+                            <td>
+                                {{product.quantity}}
+                            </td>
+                            <td>
+                                {{product.category.name}}
+                            </td>                     
+                            
+
+                            <td class="row-options">
+                                <a routerLink="/order" title="View {{product.productName}} Page">Orders</a> <br />
+                                <a routerLink="/product-single" (click)="getSingle(product.id)">View</a><br />
+                                <a href="#" (click)="deleteProduct(+product.id!)">Delete</a><br />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

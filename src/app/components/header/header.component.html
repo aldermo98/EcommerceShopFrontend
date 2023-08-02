@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar">
+  <div class="container">
+    <a class="navbar-brand font-weight-bold" routerLink="/">E-Shop</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
+      aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="main-navbar">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about"></a>
+        </li>
+        <!-- / Blog -->
+
+        <li class="nav-item dropdown dropdown-slide">
+          <a class="nav-link dropdown-toggle" routerLink="shop" id="navbarDropdown3" role="button" data-delay="350"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Shop.
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+            <li><a routerLink="/shop">Shop</a></li>
+            <li><a routerLink="/shop">Product Details</a></li>
+            <li *ngIf="role=='customer' "><a routerLink="/cart">Cart</a></li>
+            <!--<li><a routerLink="/confirmation">Confirmation</a></li>-->
+          </ul>
+        </li><!-- / Blog -->
+      
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+    </div>
+    <!-- Navbar-collapse -->
+
+    <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
+      <li class="list-inline-item">
+        
+      </li>
+
+      <li class="dropdown cart-nav dropdown-slide list-inline-item" *ngIf="role=='customer'">
+        <a href="#" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
+          <i class="tf-ion-android-cart"></i>
+        </a>
+        <div class="dropdown-menu cart-dropdown" >
+          <!-- Cart Item -->
+          <div *ngFor="let item of cart" class="media">
+            <a routerLink="/product-single">
+              <img class="media-object img- mr-3" src="assets/images/cart-1.jpg" alt="image" />
+            </a>
+            <div class="media-body">
+              <h6>{{item.product.productName}}</h6>
+              <div class="cart-price">
+                <span>{{item.quantity}} x</span>
+                <span>{{item.product.price}}</span>
+              </div>
+            </div>
+            <a (click)="removeItem(item.product.id)" href="javascript:void(0)" class="remove"><i class="tf-ion-close"></i></a>
+          </div><!-- / Cart Item -->
+
+          <div class="cart-summary">
+            <span class="h6">Total</span>
+            <span class="total-price h6">${{cartTotal}}</span>
+
+            <div class="text-center cart-buttons mt-3">
+              <a routerLink="/cart" class="btn btn-small btn-transparent btn-block">View Cart</a>
+              <a (click)="checkout()" href="javascript:void(0)" class="btn btn-small btn-main btn-block">Checkout</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="dropdown account-nav dropdown-slide list-inline-item">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+          <i class="tf-ion-ios-person mr-3"></i>
+        </a>
+
+        <ul class="dropdown-menu account-dropdown" aria-labelledby="">
+          <li><a routerLink="/dashboard" *ngIf="role != '' ">Dashboard</a></li>
+          <li><a routerLink="/orders" *ngIf="role == 'vendor' ">Orders</a></li>
+          <li><a routerLink="/profile-details" *ngIf="username != '' ">Account Details</a></li>
+          <li>
+            <span *ngIf="username != '' ">
+                <a routerLink="/logout">Logout</a>
+            </span>
+            <span *ngIf="username == '' " >
+              <a routerLink="/login">Login</a>
+            </span>
+          </li>
+          <li><a routerLink="/signup">SignUp Page</a></li>
+          <li><a routerLink="/forgot-password">Forgot Password</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

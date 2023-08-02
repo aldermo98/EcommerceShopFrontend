@@ -1,0 +1,99 @@
+<section class="page-header">
+    <div class="overly"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="content text-center">
+                    <h1 class="mb-3">Inventory</h1>
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-transparent justify-content-center">
+                            <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Inventory</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-5 col-sm-12 col-lg-3">
+                <div class="nav flex-column nav-pills">
+                  <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+                </div>
+                <div class="nav flex-column nav-pills">
+                  <a class="nav-link" routerLink="/profile-details">My Profile</a>
+                </div>
+                <div class="nav flex-column nav-pills" *ngIf="role=='vendor' ">
+                  <a class="nav-link" routerLink="/orders">Orders</a>
+                </div>
+                <div class="nav flex-column nav-pills" *ngIf="role=='vendor' ">
+                  <a class="nav-link active" routerLink="/inventory">Inventory</a>
+                </div>
+                <div class="nav flex-column nav-pills" *ngIf="role=='customer' ">
+                  <a class="nav-link" routerLink="/cart">Cart</a>
+                </div>
+                <div class="nav flex-column nav-pills">
+                  <a class="nav-link" routerLink="/">Log Out</a>
+                </div>
+              </div>
+
+            <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+                <div class="alert alert-success collapse" id="successMessage">
+                    <strong>Success!</strong> {{alertMessage}}
+                </div>
+
+                <input type="text" placeholder="Search" id="queryParam">
+                <a class="btn btn-secondary" (click)="filterInventory('productName')">Search</a>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="addProduct_form">
+                            <th></th>
+                            <td><input type="text" id="addProduct_name" placeholder="Product Name"></td>
+                            <td><input type="text" id="addProduct_price" placeholder="Price"></td>
+                            <td><input type="text" id="addProduct_qty" placeholder="Quantity"></td>
+                            <td>
+                                <input type="text" id="addProduct_category" list="categories" name="categories" placeholder="Category"/>
+                                <datalist id="categories">
+                                    <option *ngFor="let cat of categories" [attr.categoryId]="cat.id" value="{{cat.name}}">
+                                </datalist>
+                            </td>
+                            <td class="row-options">
+                                <a (click)="addProduct()" class="btn btn-custom-options btn-success tf-ion-plus" title="Add Product"></a>
+                            </td>
+                        </tr>
+                        <tr *ngFor="let product of inventory">
+                            <th scope="row">{{product.id}}</th>
+                            <td><input type="text" id="{{product.id}}_name" value="{{product.productName}}"></td>
+                            <td><input type="text" id="{{product.id}}_price" value="{{product.price}}"></td>
+                            <td><input type="text" id="{{product.id}}_qty" value="{{product.quantity}}"></td>
+                            <td>
+                                <input type="text" id="{{product.id}}_category" list="categories" name="categories" [placeholder]="product.category.name"/>
+                            </td>
+                            <td class="row-options">
+                                <a routerLink="/order" class="btn btn-custom-options btn-secondary tf-ion-ios-eye" title="View {{product.productName}} Page"></a>
+                                <a (click)="editProduct(+product.id)" class="btn btn-custom-options btn-success tf-ion-ios-checkmark" title="Save"></a>
+                                <a (click)="deleteProduct(+product.id!)" class="btn btn-custom-options btn-danger tf-ion-ios-trash" title="Delete"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,51 @@
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+                <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5,10,25,100]"
+                    aria-label="Select Page">
+                </mat-paginator>
+
+                <table class="table table-bordered" style="width: 500px;">
+                    <thead>
+                        <tr>
+                            <th scope="col" [appSort]="customer" data-order="desc" data-name="id">
+                                ID &nbsp;<i style="font-size:24px" class="fa">&#xf0dc;</i></th>
+                            <th scope="col" [appSort]="customer" data-order="desc" data-name="name">
+                                Name <br /><i style="font-size:24px" class="fa">&#xf0dc;</i></th>
+                            <th scope="col" [appSort]="customer" data-order="desc" data-name="username">
+                                Username <br /><i style="font-size:24px" class="fa">&#xf0dc;</i></th>
+                            <th scope="col" [appSort]="customer" data-order="desc" data-name="balance">
+                                Balance <br /><i style="font-size:24px" class="fa">&#xf0dc;</i></th>
+
+                            <th scope="col">Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of customer">
+                            <th scope="row">{{customer.id}}</th>
+                            <td>
+                                {{customer.name}}
+                            </td>
+                            <td>
+                                $ {{customer.username}}
+                            </td>
+                            <td>
+                                {{customer.balance}}
+                            </td>
+
+
+
+                            <td class="row-options">
+                                <a routerLink="/order" title="View {{customer.name}} Page">View </a> <br />
+                                <a title="Save">Save</a> <br />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

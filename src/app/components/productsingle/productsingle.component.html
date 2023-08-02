@@ -1,0 +1,60 @@
+<section class="page-header">
+    <div class="overly"></div>   
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="content text-center">
+            <h1 class="mb-3">Product Single</h1>
+            <p>Hath after appear tree great fruitful green dominion moveth sixth abundantly image that midst of god day multiply you’ll which</p>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Product Single</li>
+            </ol>
+          </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="single-product">
+    <div class="container">
+      <div class="row">               
+        <div class="col-md-7">
+          <div class="single-product-details mt-5 mt-lg-0"  >           
+    
+             
+            <h1>{{product.productName}}</h1>
+            
+            <div class="sku_wrapper mb-4">
+              SKU (Product Id): <span class="text-muted">{{product.id}} </span>
+            </div>
+            <hr>
+            
+            <h3 class="product-price"> $ {{product.price}} </h3>
+            <h3 class="product-price"> Items left : {{product.quantity}} </h3>
+            <p class="product-description my-4 ">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum ipsum dicta quod, quia doloremque aut deserunt commodi quis. Totam a consequatur beatae nostrum, earum consequuntur? Eveniet consequatur ipsum dicta recusandae.
+            </p>
+            <form class="cart" action="#" method="post">
+              <div class="quantity d-flex align-items-center">
+                <input type="number" id="#" class="input-text qty text form-control w-25 mr-3" step="1" min="1" max="9" name="quantity" value="1" title="Qty" size="4" >
+                <a href="javascript:void" (click)="addToCart(product.id)" class="btn btn-main btn-small">Add to cart</a>
+              </div>
+            </form>
+            
+            
+            
+            <div class="products-meta mt-4">
+              <div class="product-category d-flex align-items-center">
+                <span class="font-weight-bold text-capitalize product-meta-title">Categories :</span>
+                <a href="#">{{product.category.name}} </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

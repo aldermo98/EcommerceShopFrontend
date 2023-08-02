@@ -1,0 +1,80 @@
+<section class="page-header">
+    <div class="overly"></div> 	
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="content text-center">
+            <h1 class="mb-3">Dashboard</h1>
+            <p>Hath after appear tree great fruitful green dominion moveth sixth abundantly image that midst of god day multiply you’ll which</p>
+  
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
+          </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <section class="user-dashboard page-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-5 col-sm-12 col-lg-3">
+          <div class="nav flex-column nav-pills">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+          </div>
+          <div class="nav flex-column nav-pills">
+            <a class="nav-link active" routerLink="/profile-details">My Profile</a>
+          </div>
+          <div class="nav flex-column nav-pills" *ngIf="role=='vendor' ">
+            <a class="nav-link" routerLink="/orders">Orders</a>
+          </div>
+          <div class="nav flex-column nav-pills" *ngIf="role=='vendor' ">
+            <a class="nav-link" routerLink="/inventory">Inventory</a>
+          </div>
+          <div class="nav flex-column nav-pills" *ngIf="role=='customer' ">
+            <a class="nav-link" routerLink="/cart">Cart</a>
+          </div>
+          <div class="nav flex-column nav-pills">
+            <a class="nav-link" routerLink="/">Log Out</a>
+          </div>
+        </div>
+  
+  
+        <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+            <div class="login-form border p-5">
+                <div class="form-group mb-4">
+                    <label>Name: </label>
+                    <input type="text" id="name" value="name" class="form-control">
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label>Username: </label>
+                    <input type="text" id="username" value="username" class="form-control" disabled>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Password: </label>
+                    <input type="password" id="password" value="********" class="form-control">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Balance: </label>
+                    <input type="text" id="balance" value="9999" class="form-control">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Security Question: </label>
+                    <input type="text" id="securityQuestion" value="*******" class="form-control" disabled>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Security Answer: </label>
+                    <input type="text" id="securityAnswer" value="*******" class="form-control" disabled>
+                </div>               
+                <input (click)="updateAccount()" class="btn btn-main mt-3 btn-block" type="submit" value="Save Details">
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>

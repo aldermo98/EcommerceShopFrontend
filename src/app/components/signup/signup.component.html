@@ -1,0 +1,64 @@
+<div class="account section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="login-form border p-5">
+            <div class="text-center heading">
+              <h2 class="mb-2">Sign Up</h2>
+              <p class="lead">Already have an account? <a routerLink="/login"> Login now</a></p>
+            </div>
+            
+            <form (submit) ="onFormSubmit()" [formGroup] = "signUpForm"> 
+              <div class="form-group mb-4">
+                <label for="#">Sign Up As:</label> &nbsp; &nbsp; &nbsp;
+                <select id ="role" name="role" class="form-control" formControlName="role">
+                  <option value = "customer">Customer</option>
+                  <option value = "vendor">Vendor</option>
+                </select>
+              </div>
+              <div class="form-group mb-4">
+                <label>Enter Name: </label>
+                <input type="text" class="form-control"  name="name" formControlName="name">
+                <span *ngIf="signUpForm.controls['name'].invalid && signUpForm.controls['name'].touched">
+                    <span *ngIf="signUpForm.controls['name'].errors['required']"> Name is required</span>
+                    <span *ngIf="signUpForm.controls['name'].errors['pattern']"> Name should be only letters</span>
+                </span>
+              </div>
+              <div class="form-group mb-4">
+                <label>Enter Username: </label>
+                <input type="text"  class="form-control" name="username" formControlName="username">
+                <span *ngIf="signUpForm.controls['username'].invalid && signUpForm.controls['username'].touched">
+                    <span *ngIf="signUpForm.controls['username'].errors['username']"> Username is required</span>
+                </span>
+              </div>
+              <div class="form-group mb-4">
+                <label>Enter Password: </label>
+                <input type="text" class="form-control" name="password" formControlName="password">
+                <span *ngIf="signUpForm.controls['password'].invalid && signUpForm.controls['password'].touched">
+                    <span *ngIf="signUpForm.controls['password'].errors['required']"> Password is required</span>
+                </span>
+              </div>
+              <div class="form-group mb-4">
+                <label>Enter Balance: </label>
+                <input type="text" class="form-control" name="balance" formControlName="balance">
+                <span *ngIf="signUpForm.controls['balance'].invalid && signUpForm.controls['balance'].touched">
+                    <span *ngIf="signUpForm.controls['balance'].errors['required']"> Balance is required</span>
+                    <span *ngIf="signUpForm.controls['balance'].errors['pattern']"> Balance should be only numbers</span>
+                </span>
+              </div>
+              <div class="form-group mb-4">
+                <label>Enter Security Question: </label>
+                <input type="text" class="form-control" name="question" formControlName="securityQuestion">
+              </div>
+              <div class="form-group mb-4">
+                <label>Enter Security Answer: </label>
+                <input type="text" class="form-control" name="answer" formControlName="securityAnswer">
+              </div>               
+              <input class="btn btn-main mt-3 btn-block" type="submit" value="Add" [disabled]="!signUpForm.valid">
+          </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

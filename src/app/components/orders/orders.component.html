@@ -1,0 +1,72 @@
+<section class="page-header">
+  <div class="overly"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="content text-center">
+          <h1 class="mb-3">Order History</h1>
+
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Orders</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="user-dashboard page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-5 col-sm-12 col-lg-3">
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+        </div>
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/profile-details">My Profile</a>
+        </div>
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link active" routerLink="/orders">Orders</a>
+        </div>
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/inventory">Inventory</a>
+        </div>
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/cart">Cart</a>
+        </div>
+        <div class="nav flex-column nav-pills">
+          <a class="nav-link" routerLink="/">Log Out</a>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Customer ID</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Purchase Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let o of orders">
+              <th scope="row">{{o.id}}</th>
+              <td>{{o.customer.id}}</td>
+              <td>{{o.product.productName}}</td>
+              <td>{{o.product.price}}</td>
+              <td>{{o.quantity}}</td>
+              <td>{{o.purchaseDate}}</td>         
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+<div class="account section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="login-form border p-5">
+            <div class="text-center heading">
+              <h2 class="mb-2">Login</h2>
+              {{message}}
+              <p class="lead">Don’t have an account? <a routerLink="/signup">Create a free account</a></p>
+            </div>
+  
+            <form (submit)="onFormSubmit()" [formGroup]="loginForm">
+              <div class="form-group mb-4">
+                <label for="#">Enter username</label>
+                <input type="text" class="form-control" placeholder="Enter Username" formControlName="username">
+              </div>
+              <div class="form-group">
+                <label for="#">Enter Password</label>
+                <a class="float-right" routerLink="/forgot-password">Forget password?</a>
+                <input type="text" class="form-control" placeholder="Enter Password" formControlName="password"> 
+              </div>
+              <input type="submit" value="Login" [disabled]="!loginForm.valid">
+              <!-- <a href="#" class="btn btn-main mt-3 btn-block">Login</a> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

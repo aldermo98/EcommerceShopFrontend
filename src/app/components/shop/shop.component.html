@@ -1,0 +1,75 @@
+<section class="products-shop section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="row align-items-center">
+          <div class="col-lg-12 mb-4 mb-lg-0">
+            <div class="section-title">
+              <h2 class="d-block text-left-sm">Shop</h2>
+              <div class="heading d-flex justify-content-between mb-5">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5" *ngFor="let product of product">
+            <div class="product">
+              <div class="product-wrap">
+                <a><img class="img-fluid w-100 mb-3 img-first" src="assets/images/322.jpg"
+                    alt="product-img" /></a>
+              </div>
+              <div class="product-hover-overlay">
+                <a href="javascript:void" (click)="addToCart(product.id)"><i class="tf-ion-android-cart"></i></a>
+              </div>
+              <div class="product-info">
+                <h2 class="product-title h5 mb-0"><a routerLink="/product-single" (click)="getSingle(product.id)">{{product.productName}}</a></h2>
+                <span class="price">
+                  $ {{product.price}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="Javascript:void" (click)="prev()" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <!--
+                <li class="page-item active"><a class="page-link" href="Javascript:void" (click)="prev()">1</a></li>
+                <li class="page-item"><a class="page-link" href="Javascript:void" (click)="next()">2</a></li>
+                -->
+                <li class="page-item">
+                  <a class="page-link" href="Javascript:void" (click)="next()" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+
+        <!-- Sorting buttons -->
+        <form class="mb-5">
+          <!-- sort-->
+          <section class="widget widget-colors mb-5">
+            <h3 class="widget-title h4 mb-4">Sort Products</h3>
+            <!-- Default/reset not working
+            <button on(click)= "window.location.reaload()" type="button" class="btn btn-black btn-small">Default Sorting</button><br /><br />
+          -->
+            
+            <button (click)= "sortPrice(1)" type="button" class="btn btn-black btn-small">Price: Low-High</button><br /><br />
+            <button (click)= "sortPrice(2)" type="button" class="btn btn-black btn-small">Price: High-Low</button> <br /><br />
+            <button (click)= "sortDefault(1)" type="button" class="btn btn-black btn-small">*Reset-Sorting*</button>
+          </section>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

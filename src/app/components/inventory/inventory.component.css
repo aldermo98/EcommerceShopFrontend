@@ -1,0 +1,8 @@
+.row-options{
+    display: flex;
+    justify-content: center;
+}
+.btn-custom-options{
+    padding: auto;
+    cursor: pointer;
+}
